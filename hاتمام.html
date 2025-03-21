@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلة المشتريات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            direction: rtl;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            padding: 20px;
+            width: 80%;
+            text-align: center;
+        }
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-item p {
+            margin: 0;
+        }
+        .total {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        .empty-cart {
+            font-size: 1.5em;
+            color: #888;
+        }
+
+        .toggle-btn {
+            position: fixed;
+    left: 0;
+    top: 29px;
+    background: transparent;
+    color: #000;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 30px;
+    transition: font-size 0.3s ease;
+    padding: 22px;
+        }
+
+
+
+
+
+
+        .asas{
+            font-size: 3px;
+        }
+
+
+        .icon{
+            font-size: 30px;
+        }
+        .aass{
+            font-size: 2px;
+            background-color: #a4111b;
+        }
+        .aass:hover {
+            font-size: 2px;
+            background-color: #f5f5f5;
+        }
+        img{
+            width: 20%;
+            height: .222%;
+            object-fit: cover;
+          
+           
+        }
+
+
+      
+    </style>
+</head>
+<body>
+
+    
+    <button class="toggle-btn"  onclick="goBack()">←</button>
+
+
+    <div class="container">
+        <h1>سلة المشتريات</h1>
+        <div class="cart-items" id="cart-items">
+            <!-- سيتم إضافة العناصر هنا عبر JavaScript -->
+        </div>
+        <div class="total" id="total">
+            <!-- سيتم عرض السعر الإجمالي هنا -->
+             
+        </div>
+        
+        <div class="empty-cart" id="empty-cart">
+            <!-- سيتم عرض رسالة السلة الفارغة هنا -->
+        </div>
+        <div>
+            <h3 class="aaasss">"يرجى التقاط لقطة شاشة وإرسالها عبر الواتساب."
+                <h3>"لأكمال الطلب"</h3>
+    
+            </h3>
+            <button class="aass">  <a href="https://wa.me/966557969968?text=مرحبًا، أريد الاستفسار عن المنتجات."  class="icon">
+                <img  class="asas" src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Icon">
+              </a></button>
+        </div>
+    </div>
+
+    
+
+    <script>
+        // استرجاع بيانات السلة من LocalStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // تحديد العناصر في الصفحة
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalContainer = document.getElementById('total');
+        const emptyCartMessage = document.getElementById('empty-cart');
+
+        // التحقق إذا كانت السلة فارغة
+        if (cart.length === 0) {
+            emptyCartMessage.textContent = 'سلة المشتريات فارغة';
+            totalContainer.textContent = 'السعر الإجمالي: 0 ريال';
+           
+        } else {
+            // إخفاء رسالة السلة الفارغة
+            emptyCartMessage.style.display = 'none';
+
+            // حساب السعر الإجمالي
+            let total = 0;
+
+            // إنشاء عناصر السلة
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <p>${item.name}</p>
+                    <p>${item.price} ريال</p>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+                total += item.price;
+                
+            });
+
+            // عرض السعر الإجمالي
+            totalContainer.textContent = `السعر الإجمالي: ${total} ريال`;
+          
+   
+        }
+
+        function goBack() {
+            window.history.back(); // هذه الدالة تقوم بإرجاع المستخدم للصفحة السابقة
+        }
+
+
+
+       
+       
+    </script>
+</body>
+</html>

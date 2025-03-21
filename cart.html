@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلة المشتريات</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    direction: rtl;
+    flex-direction: column;
+    align-items: center;
+    
+}
+        .container {
+            padding: 20px;
+            width: 80%;
+            text-align: center;
+        }
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .cart-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-item p {
+            margin: 5px 0;
+        }
+        .cart-item button {
+            background: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .cart-item button:hover {
+            background: #c82333;
+        }
+        .total {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .checkout-btn {
+    background: #a4111b;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+        }
+
+
+        .toggle-btn {
+            position: fixed;
+    left: 0;
+    top: 29px;
+    background: transparent;
+    color: #000;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 30px;
+    transition: font-size 0.3s ease;
+    padding: 22px;
+        }
+
+
+      
+
+
+
+       
+    </style>
+</head>
+<body>
+
+
+
+
+   
+
+
+    <button class="toggle-btn"  onclick="goBack()">←</button>
+
+
+
+
+
+
+    <div class="container">
+        <h1>سلة المشتريات</h1>
+        <ul class="cart-items" id="cart-items">
+            <!-- سيتم إضافة العناصر هنا بواسطة JavaScript -->
+        </ul>
+        <p class="total" id="total">المجموع: 0 ريال</p>
+    </div>
+
+   
+
+    <a href="hاتمام.html" class="checkout-btn">إتمام الشراء</a>
+
+    <script>
+        // استرجاع بيانات السلة من التخزين المحلي
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // دالة لعرض العناصر في السلة
+        function displayCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalElement = document.getElementById('total');
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.classList.add('cart-item');
+                li.innerHTML = `
+                    <p>المنتج: ${item.name}</p>
+                    <p>السعر: ${item.price} ريال</p>
+                    <button onclick="removeFromCart('${item.name}')">إزالة</button>
+                `;
+                cartItemsContainer.appendChild(li);
+                total += item.price;
+            });
+
+            totalElement.textContent = `المجموع: ${total} ريال`;
+        }
+
+        // دالة لإزالة منتج من السلة
+        function removeFromCart(productName) {
+            cart = cart.filter(item => item.name !== productName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        // عرض السلة عند تحميل الصفحة
+        displayCart();
+
+
+        function goBack() {
+            window.history.back(); // هذه الدالة تقوم بإرجاع المستخدم للصفحة السابقة
+        }
+
+
+    </script>
+
+
+
+
+
+
+
+  
+
+  </body>
+ </html> 

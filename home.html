@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر إلكتروني</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+      
+
+    
+</head>
+<body>
+    
+    <button class="toggle-btn" id="icon" onclick="toggleSidebar()">☰</button>
+    <div class="sidebar" id="sidebar">
+        <h2>القائمة <a href="cart.html" class="cart-icon" id="cart-icon">🛒</a></h2>
+        <ul>
+            <li><a href="home.html">الرئيسية</a></li>
+            <li>جديدنا</li>
+            <li>العروض</li>
+          
+        </ul>
+    </div>
+    <div class="container" id="container">
+        <img data-v-5fabcf90="" src="لوجو_Logo_أحمر_و_بني_لمتجر_كيك__5_-removebg-preview.png" alt="حلويات روز | Rose Sweets" class="mwas">
+        
+
+        <input type="text" id="search" class="search-box" placeholder="ابحث عن الحلا..." onkeyup="searchProducts()">
+        <div class="products" id="products">
+            <div class="product" data-name="طبق حلا بالشوكالاته منوع"data-price="100">
+                <img src="صورة واتساب بتاريخ 1446-09-08 في 16.48.08_0541d9b9.jpg" alt="طبق حلا بالشوكالاته منوع">
+                <p>طبق حلا بالشوكالاته منوع</p>
+                <p>50 ريال</p>
+                <p class="aass">★★★★★</p>
+                <button class="add-to-cart" onclick="addToCart('طبق حلا بالشوكالاته منوع', 50)">أضف إلى السلة</button>
+            </div>
+            <div class="product" data-name="كحك ساده" data-price="200">
+                <img src="صورة واتساب بتاريخ 1446-09-11 في 16.57.25_a59eb06d.jpg" alt="كحك ساده">
+                <p>كحك ساده</p>
+                <p>60 ريال</p>
+                <p class="aass">★★★★★</p>
+                <button class="add-to-cart" onclick="addToCart('كحك ساده', 60)">أضف إلى السلة</button>
+            </div>
+            
+            <!-- أضف المزيد من المنتجات هنا -->
+        </div>
+    </div>
+
+    <link rel="icon" type="image/x-icon" href="https://d2pi0n2fm836iz.cloudfront.net/596389/0905202408242266d96ab680df0-0905202408240166d96aa1d831b.jpg"/>
+
+    <footer>
+        <img data-v-5fabcf90="" src="لوجو_Logo_أحمر_و_بني_لمتجر_كيك__5_-removebg-preview.png" alt="حلويات روز | Rose Sweets" class="mwas">
+        
+        <h2 class="elementor-heading-title elementor-size-default">جميع الحقوق محفوظة لأفخم الحلا | © 2025</h2>
+        <h2 class="elementor-heading-title elementor-size-default">تطوير و تشغيل I PRO</h2>
+        
+    </footer>
+
+
+    <script src="app.js">
+       
+    </script>
+</body>
+</html>
